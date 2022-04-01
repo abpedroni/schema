@@ -1,12 +1,37 @@
 {
   "title": "JSON schema ASP.NET Core's appsettings.json file",
-  "$schema": "http://json-schema.org/draft-07/schema",
+  "$schema": "http://json-schema.org/draft-04/schema",
   "type": "object",
-  "additionalProperties": false,
+  "definitions": {
+    "kestrel":{
+      "type":"object",
+      "description":"ASP.NET Core Kestrel server configuration.",
+      "properties":{
+         "Endpoints":{
+            "description":"Endpoints that Kestrel listens to for network requests. Each endpoint has a name specified by its JSON property name.",
+            "type":"object",
+            "additionalProperties":{
+               "description":"Kestrel endpoint configuration.",
+               "type":"object",
+               "properties":{
+                  "Url":{
+                     "description":"The scheme, host name, and port the endpoint will listen on. A Url is required.",
+                     "type":"string",
+                     "format":"uri"
+                  }
+               }
+            }
+         }
+      }
+    }
+  },
   "properties": {
     "KestrelTestando": {
       "description": "The name of a block. By default the name in package.json is used.",
       "type": "string",
+    },
+    "Kestrel": {
+      "$ref": "#/definitions/kestrel"
     },
     "events": {
       "type": "object",
