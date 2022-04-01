@@ -1,0 +1,31 @@
+{
+  "title": "JSON schema ASP.NET Core's appsettings.json file",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "KestrelTestando": {
+      "description": "The name of a block. By default the name in package.json is used.",
+      "type": "string",
+    },
+    "events": {
+      "type": "object",
+      "description": "An object describing the names of the events the block can listen and emit to. By default this is extracted from the block’s TypeScript module augmentations.",
+      "additionalProperties": false,
+      "properties": {
+        "listen": {
+          "description": "The events the block listens on.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
